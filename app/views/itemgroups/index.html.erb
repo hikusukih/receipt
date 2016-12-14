@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Itemgroups</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Group</th>
+      <th>Grouptype</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @itemgroups.each do |itemgroup| %>
+      <tr>
+        <td><%= itemgroup.item_id %></td>
+        <td><%= itemgroup.group_id %></td>
+        <td><%= itemgroup.grouptype_id %></td>
+        <td><%= link_to 'Show', itemgroup %></td>
+        <td><%= link_to 'Edit', edit_itemgroup_path(itemgroup) %></td>
+        <td><%= link_to 'Destroy', itemgroup, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Itemgroup', new_itemgroup_path %>

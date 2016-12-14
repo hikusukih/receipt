@@ -1,0 +1,2 @@
+== 20160602175834 CreateLocationtypes: migrating ==============================
+-- create_table(:locationtypes)
