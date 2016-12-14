@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Groupitems</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Group</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @groupitems.each do |groupitem| %>
+      <tr>
+        <td><%= groupitem.item.name %></td>
+        <td><%= groupitem.group.name %></td>
+        <td><%= link_to 'Show', groupitem %></td>
+        <td><%= link_to 'Edit', edit_groupitem_path(groupitem) %></td>
+        <td><%= link_to 'Destroy', groupitem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Groupitem', new_groupitem_path %>
