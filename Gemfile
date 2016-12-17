@@ -48,5 +48,8 @@ group :development, :test do
   gem 'spring'
 
   gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+
+  gem 'omniauth'
+  gem 'omniauth-facebook', '1.4.0'
 end
 
