@@ -11,16 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161217172753) do
+ActiveRecord::Schema.define(version: 20161217211433) do
 
   create_table "deals", force: :cascade do |t|
-    t.string   "location"
     t.decimal  "price"
     t.date     "endDate"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "item_id"
+    t.integer  "user_id"
+    t.integer  "deal_id"
+    t.integer  "location_id"
   end
+
+  add_index "deals", ["deal_id"], name: "index_deals_on_deal_id"
+  add_index "deals", ["location_id"], name: "index_deals_on_location_id"
+  add_index "deals", ["user_id"], name: "index_deals_on_user_id"
 
   create_table "groupitems", force: :cascade do |t|
     t.integer  "item_id"
