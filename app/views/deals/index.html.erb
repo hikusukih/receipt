@@ -17,10 +17,11 @@
     <% @deals.each do |deal| 
 
       begin
-m_str_dealLocationName = Location.find(deal.location_id).first.name;
-rescue ActiveRecord::RecordNotFound => e
-  m_str_dealLocationName = ""
-end
+        m_str_dealLocationName = Location.find(deal.location_id).first.name;
+      rescue ActiveRecord::RecordNotFound => e
+        m_str_dealLocationName = ""
+      end
+      
       %>
       <tr>
         <td><%= Item.find(deal.item_id).name %></td>
@@ -33,10 +34,10 @@ end
         <td><%= link_to 'Edit', edit_deal_path(deal) %></td>
         <td><%= link_to 'Destroy', deal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% end %>
+    </tbody>
+  </table>
 
-<br>
+  <br>
 
-<%= link_to 'New Deal', new_deal_path %>
+  <%= link_to 'New Deal', new_deal_path %>
