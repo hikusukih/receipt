@@ -17,11 +17,11 @@
     <% @deals.each do |deal| 
 
       begin
-        m_str_dealLocationName = Location.find(deal.location_id).first.name;
+        m_str_dealLocationName = Location.find(deal.location_id).name;
       rescue ActiveRecord::RecordNotFound => e
         m_str_dealLocationName = ""
       end
-      
+
       %>
       <tr>
         <td><%= Item.find(deal.item_id).name %></td>

@@ -1,10 +1,17 @@
 class DealsController < ApplicationController
   before_action :set_deal, only: [:show, :edit, :update, :destroy]
 
+  # GET /mydeals
+  def mydeals
+    @deals = Deal.where(user_id: current_user)
+  end
+
+
   # GET /deals
   # GET /deals.json
   def index
-    @deals = Deal.where(user_id: current_user)
+    #<!-- DEALS should show ALL DEALS but never display the USER -->
+    @deals = Deal.all
   end
 
   # GET /deals/1
@@ -69,6 +76,6 @@ class DealsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deal_params
-      params.require(:deal).permit(:deal, :item_id, :location, :price, :endDate)
+      params.require(:deal).permit(:deal, :item_id, :location_id, :price, :endDate)
     end
 end
