@@ -1,32 +1,45 @@
 <%= form_for(@deal) do |f| %>
-  <% if @deal.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@deal.errors.count, "error") %> prohibited this deal from being saved:</h2>
+<% if @deal.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@deal.errors.count, "error") %> prohibited this deal from being saved:</h2>
 
-      <ul>
-      <% @deal.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <ul>
+    <% @deal.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<div id="field-container" class="container">
+  <div class="row">
+    <div class="col-md2">
+      <div class="field">
+        <%= f.label :item_id %><br>
+        <%= f.text_field :item_id %>
+      </div>
     </div>
-  <% end %>
-  <div class="field">
-    <%= f.label :item_id %><br>
-    <%= f.text_field :item_id %>
+    <div class="col-md2">
+      <div class="field">
+        <%= f.label :location %><br>
+        <%= f.text_field :location %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :location %><br>
-    <%= f.text_field :location %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :endDate %><br>
-    <%= f.date_select :endDate %>
+  <div class="row">
+    <div class="field">
+      <%= f.label :price %><br>
+      <%= f.text_field :price %>
+    </div>
+    <div class="col-md2">
+      <div class="field">
+        <%= f.label :endDate %><br>
+        <%= f.date_select :endDate %>
+      </div>
+    </div>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
+</div>
+</div>
 <% end %>
