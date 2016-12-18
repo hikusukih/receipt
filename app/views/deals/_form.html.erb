@@ -15,13 +15,13 @@
     <div class="col-md2">
       <div class="field">
         <%= f.label :item_id %><br>
-        <%= f.text_field :item_id %>
+        <%= f.select :item_id, Item.select("name, id").map{|oItem| [oItem.name, oItem.id]} %>
       </div>
     </div>
     <div class="col-md2">
       <div class="field">
         <%= f.label :location_id %><br>
-        <%= f.text_field :location_id %>
+        <%= f.select :location_id, Location.select("name, id").map{|oLoc| [oLoc.name, oLoc.id]} %>
       </div>
     </div>
   </div>
