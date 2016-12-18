@@ -10,7 +10,7 @@
   </thead>
 
   <tbody>
-    <% @deals.each do |deal| %>
+    <% dealset.each do |deal| %>
 
     <% begin %>
     <%   m_str_dealLocationName = Location.find(deal.location_id).name; %>

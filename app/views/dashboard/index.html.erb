@@ -1,6 +1,6 @@
 <h2>Deals</h2>
 
-<%= render "deals/allDeals" %>
+<%= render :partial => 'deals/tableDeals', :locals => { :dealset => @deals } %>
 
 <h2>Items</h2>
 <table>
