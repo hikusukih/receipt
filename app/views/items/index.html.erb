@@ -6,22 +6,46 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Best</th>
+      <th>$</th>
+      <th>Worst</th>
+      <th>$</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @items.each do |item| %>
-      <tr>
-        <td><%= item.name %></td>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <% dBestDeal = item.bestDeal
+    if dBestDeal
+      sBestDealLocationName = Location.where(id: dBestDeal.location_id).first.name
+      sBestDealPrice = dBestDeal.price
+    else
+      sBestDealLocationName = "-"
+      sBestDealPrice = "-"
+      end %>
+      <% dWorstDeal = item.worstDeal
+      if dWorstDeal
+        sWorstDealLocationName = Location.where(id: dWorstDeal.location_id).first.name
+        sWorstDealPrice = dWorstDeal.price
+      else
+        sWorstDealLocationName = "-"
+        sWorstDealPrice = "-"
+        end %>
+        <tr>
+          <td><%= item.name %></td>
+          <td><%= sBestDealLocationName %></td>
+          <td><%= sBestDealPrice %></td>
+          <td><%= sWorstDealLocationName %></td>
+          <td><%= sWorstDealPrice %></td>
+          <td><%= link_to 'Show', item %></td>
+          <td><%= link_to 'Edit', edit_item_path(item) %></td>
+          <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-<br>
+    <br>
 
-<%= link_to 'New Item', new_item_path %>
+    <%= link_to 'New Item', new_item_path %>
