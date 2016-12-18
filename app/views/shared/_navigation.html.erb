@@ -1,32 +1,22 @@
-<nav class="navbar navbar-default" role="navigation">
-  <div class="row">
-    <div class="col-md-3">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="/">Receipt Nav</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3 pull-right">
-      <ul>
-        <li><%= link_to 'Deals', deals_path %></li>
-        <li><%= link_to 'Items', items_path %></li>
-        <li><%= link_to 'Groups', groups_path %></li>
-        <li><%= link_to 'Locations', locations_path %></li>
+
+<div id="navContainer" class="container">
+  <div class="header clearfix">
+    <nav>
+      <ul class="nav nav-pills pull-right">
+          <li><%= link_to 'Deals', deals_path %></li>
+          <li><%= link_to 'Items', items_path %></li>
+          <li><%= link_to 'Groups', groups_path %></li>
+          <li><%= link_to 'Locations', locations_path %></li>
       </ul>
+    </nav>
+    <h3 class="text-muted">Recete</h3>
+    <div id="user-widget" class="pull-right text-muted">
+      <% if current_user %>
+      Welcome <strong><%= current_user.name %></strong>!
+      <%= link_to "Sign out", signout_path, id: "sign_out" %>
+      <% else %>
+      <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+      <% end %>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-3">
-      <div id="user-widget">
-        <% if current_user %>
-        Welcome <strong><%= current_user.name %></strong>!
-        <%= link_to "Sign out", signout_path, id: "sign_out" %>
-        <% else %>
-        <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</nav>
+</div>
