@@ -25,9 +25,7 @@
       %>
       <tr>
         <td><%= Item.find(deal.item_id).name %></td>
-        
         <td><%= m_str_dealLocationName %></td>
-        
         <td><%= deal.price %></td>
         <td><%= deal.endDate %></td>
         <td><%= link_to 'Show', deal %></td>
@@ -63,9 +61,7 @@
       %>
       <tr>
         <td><%= Item.find(deal.item_id).name %></td>
-        
         <td><%= m_str_dealLocationName %></td>
-        
         <td><%= deal.price %></td>
         <td><%= deal.endDate %></td>
         <td><%= link_to 'Show', deal %></td>
@@ -75,7 +71,5 @@
       <% end %>
     </tbody>
   </table>
-
   <br>
-
   <%= link_to 'New Deal', new_deal_path %>
