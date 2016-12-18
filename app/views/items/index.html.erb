@@ -16,7 +16,7 @@
 
   <tbody>
     <% @items.each do |item| %>
-    <% dBestDeal = Deal.where(item_id: item.id).order(:price).first
+    <% dBestDeal = item.bestDeal
     if dBestDeal
       sBestDealLocationName = Location.where(id: dBestDeal.location_id).first.name
       sBestDealPrice = dBestDeal.price
@@ -24,7 +24,7 @@
       sBestDealLocationName = "-"
       sBestDealPrice = "-"
       end %>
-      <% dWorstDeal = Deal.where(item_id: item.id).order(price: :desc).first
+      <% dWorstDeal = item.worstDeal
       if dWorstDeal
         sWorstDealLocationName = Location.where(id: dWorstDeal.location_id).first.name
         sWorstDealPrice = dWorstDeal.price
