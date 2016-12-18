@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Deals</h1>
+<h1>All Deals</h1>
 
 <table>
   <thead>
     <tr>
       <th>Item</th>
-      <th>Deal</th>
+      <th>Location</th>
       <th>Price</th>
       <th>Enddate</th>
       <th colspan="3"></th>
@@ -14,20 +14,62 @@
   </thead>
 
   <tbody>
-    <% @deals.each do |deal| %>
+    <% @deals.each do |deal| 
+
+      begin
+        m_str_dealLocationName = Location.find(deal.location_id).name;
+      rescue ActiveRecord::RecordNotFound => e
+        m_str_dealLocationName = ""
+      end
+
+      %>
       <tr>
         <td><%= Item.find(deal.item_id).name %></td>
-        <td><%= Location.find(deal.location).name %></td>
+        <td><%= m_str_dealLocationName %></td>
         <td><%= deal.price %></td>
         <td><%= deal.endDate %></td>
         <td><%= link_to 'Show', deal %></td>
         <td><%= link_to 'Edit', edit_deal_path(deal) %></td>
         <td><%= link_to 'Destroy', deal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% end %>
+    </tbody>
+  </table>
 
-<br>
+<h1>My Deals</h1>
 
-<%= link_to 'New Deal', new_deal_path %>
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Location</th>
+      <th>Price</th>
+      <th>Enddate</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mydeals.each do |deal| 
+
+      begin
+        m_str_dealLocationName = Location.find(deal.location_id).name;
+      rescue ActiveRecord::RecordNotFound => e
+        m_str_dealLocationName = ""
+      end
+
+      %>
+      <tr>
+        <td><%= Item.find(deal.item_id).name %></td>
+        <td><%= m_str_dealLocationName %></td>
+        <td><%= deal.price %></td>
+        <td><%= deal.endDate %></td>
+        <td><%= link_to 'Show', deal %></td>
+        <td><%= link_to 'Edit', edit_deal_path(deal) %></td>
+        <td><%= link_to 'Destroy', deal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <%= link_to 'New Deal', new_deal_path %>

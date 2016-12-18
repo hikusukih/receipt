@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 <p>
   <strong>Item:</strong>
-  <%= Item.find( @deal.item_id).name %>
+  <%= Item.find(@deal.item_id).name %>
 </p>
 
 <p>
   <strong>Location:</strong>
-  <%= Location.find(@deal.location).name %>
+  <%= Location.find(@deal.location_id).name %>
 </p>
 
 <p>
@@ -18,6 +18,6 @@
   <strong>Enddate:</strong>
   <%= @deal.endDate %>
 </p>
-
+<!-- DEALS should show ALL DEALS but never display the USER -->
 <%= link_to 'Edit', edit_deal_path(@deal) %> |
 <%= link_to 'Back', deals_path %>

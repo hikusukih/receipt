@@ -4,7 +4,9 @@ class DealsController < ApplicationController
   # GET /deals
   # GET /deals.json
   def index
+    #<!-- DEALS should show ALL DEALS but never display the USER -->
     @deals = Deal.all
+    @mydeals = Deal.where(user_id: current_user)
   end
 
   # GET /deals/1
@@ -25,7 +27,7 @@ class DealsController < ApplicationController
   # POST /deals.json
   def create
     @deal = Deal.new(deal_params)
-
+    @deal.user_id = current_user.id
     respond_to do |format|
       if @deal.save
         format.html { redirect_to @deal, notice: 'Deal was successfully created.' }
@@ -69,6 +71,6 @@ class DealsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deal_params
-      params.require(:deal).permit(:deal, :item_id, :location, :price, :endDate)
+      params.require(:deal).permit(:deal, :item_id, :location_id, :price, :endDate, :user_id)
     end
 end
