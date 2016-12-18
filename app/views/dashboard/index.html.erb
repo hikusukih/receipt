@@ -1,36 +1,6 @@
-<h1>Dashboard#index</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
-<ul>
-  <li><%= link_to 'Deals', deals_path %></li>
-  <li><%= link_to 'Items', items_path %></li>
-  <li><%= link_to 'Groups', groups_path %></li>
-  <li><%= link_to 'Locations', locations_path %></li>
-</ul>
-
 <h2>Deals</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Deal</th>
-      <th>Price</th>
-      <th>Enddate</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @deals.each do |deal| %>
-      <tr>
-        <td><%= deal.location_id %></td>
-        <td><%= deal.price %></td>
-        <td><%= deal.endDate %></td>
-        <td><%= link_to 'Show', deal %></td>
-        <td><%= link_to 'Edit', edit_deal_path(deal) %></td>
-        <td><%= link_to 'Destroy', deal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render "deals/allDeals" %>
 
 <h2>Items</h2>
 <table>
