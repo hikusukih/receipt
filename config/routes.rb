@@ -20,8 +20,6 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
    root 'dashboard#index'
 
-   get 'deals/mydeals' => 'deals#mydeals'
-
 #for Oauth from https://coderwall.com/p/bsfitw/ruby-on-rails-4-authentication-with-facebook-and-omniauth
 match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
 match 'auth/failure', to: redirect('/'), via: [:get, :post]
