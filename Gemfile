@@ -42,6 +42,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# http://blog.honeybadger.io/ruby-guide-environment-variables/
+# Pre-Load Environment Variables (e.g. FB API Key)
+# so they aren't checked in to config files
+gem 'figaro'
+
 
   gem 'devise'
   gem 'omniauth'
