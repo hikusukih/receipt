@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-
+# Devise first, then the Users resource. That way "sign_in" isn't interpreted as a user id
+  devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
+  
   resources :lists
   resources :locations
   get 'dashboard/index'
@@ -16,18 +18,9 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   
-  # Devise first, then the Users resource. That way "sign_in" isn't interpreted as a user id
-  devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
   resources :users
   # You can have the root of your site routed with "root"
    root 'dashboard#index'
-
-#for Oauth from https://coderwall.com/p/bsfitw/ruby-on-rails-4-authentication-with-facebook-and-omniauth
-match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
-match 'auth/failure', to: redirect('/'), via: [:get, :post]
-match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
-match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
-
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

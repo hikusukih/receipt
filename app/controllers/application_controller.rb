@@ -3,15 +3,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  private
-  def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-  end
-  helper_method :current_user
-
   # http://sourcey.com/rails-4-omniauth-using-devise-with-twitter-facebook-and-linkedin/
   #You can use it in a before_filter like so: before_filter :ensure_signup_complete, only: [:new, :create, :update, :destroy]
-  
+
   def ensure_signup_complete
     # Ensure we don't go into an infinite loop
     return if action_name == 'finish_signup'
