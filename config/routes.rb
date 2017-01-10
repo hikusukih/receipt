@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 # Devise first, then the Users resource. That way "sign_in" isn't interpreted as a user id
   devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
   
+  resources :users
+  match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
+
   resources :lists
   resources :locations
   get 'dashboard/index'
@@ -18,7 +21,6 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   
-  resources :users
   # You can have the root of your site routed with "root"
    root 'dashboard#index'
 
