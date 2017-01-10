@@ -10,12 +10,21 @@
     </nav>
 
     <h3 class="text-muted"><%= link_to "Recete", root_path %></h3>
+    <% if user_signed_in? %>
+  <li>
+  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+  </li>
+<% else %>
+  <li>
+  <%= link_to('Login', new_user_session_path)  %>  
+  </li>
+<% end %>
     <div id="user-widget" class="pull-right text-muted">
-      <% if current_user %>
+      <% if user_signed_in? %>
       Welcome <strong><%= current_user.name %></strong>!
-      <%= link_to "Sign out", signout_path, id: "sign_out" %>
+      
       <% else %>
-      <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+      <%= link_to "Sign in with Facebook", "/users/auth/facebook", id: "sign_in" %>
       <% end %>
     </div>
   </div>
